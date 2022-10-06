@@ -8,7 +8,7 @@
                     <include name="checkAuthorization"/>
                 </methods>
             </class>
-            <class name="tests.TestCase_1_2">
+            <class name="tests.TestCase_1_2to4">
                 <methods>
                     <include name="checkSearchProducts"/>
                 </methods>

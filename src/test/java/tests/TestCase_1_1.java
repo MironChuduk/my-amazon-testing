@@ -14,8 +14,8 @@ public class TestCase_1_1 extends BaseTest {
         amazonHomePage.clickToSignIn();
 
         signIn
-                .signIn();
-                //.checkSuccessfulLogin();
+                .signIn()
+                .checkSuccessfulLogin();
 
     }
 

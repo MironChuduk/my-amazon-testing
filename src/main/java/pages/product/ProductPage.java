@@ -16,6 +16,7 @@ public class ProductPage extends BasePage {
     private final By checkMark = By.xpath("//div[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']//i");
     private final By successMessage = By.xpath("//div[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']//span");
     private final By cartCount = By.id("nav-cart-count");
+    private final By goToCart = By.xpath("//span[@id='sw-gtc']//span");
 
     /**
      * The method adds the product to the cart
@@ -27,6 +28,10 @@ public class ProductPage extends BasePage {
         return this;
     }
 
+    /**
+     * The method checks if the product picture, green icon, has appeared on the screen.
+     * The method also checks correct value of count shopping cart in the top right corner of the page.
+     */
     public ProductPage checkProductAddedToCart(String expectedMessage){
         WebElement imgOfAddedProductToCart = driver.findElement(addedProductToCartImg);
         waitElementIsVisible(imgOfAddedProductToCart);
@@ -39,6 +44,15 @@ public class ProductPage extends BasePage {
 
         int countOfProductsInCart = Integer.parseInt(driver.findElement(cartCount).getText());
         Assert.assertEquals(countOfProductsInCart, 1);
+
+        return this;
+    }
+
+    /**
+     * The method allows you to go to the cart page.
+     */
+    public ProductPage goTnCart(){
+        driver.findElement(goToCart).click();
 
         return this;
     }
