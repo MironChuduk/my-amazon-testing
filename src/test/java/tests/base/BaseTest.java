@@ -7,6 +7,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import pages.amazon_home.AmazonHomePage;
 import pages.base.BasePage;
+import pages.results_of_search.ResultsOfSearchPage;
 import pages.signin.SignIn;
 
 import static common.Config.CLEAR_COOKIES_AND_STORAGE;
@@ -17,6 +18,7 @@ public class BaseTest {
     protected WebDriver driver = CommonActions.createDriver();
     protected BasePage basePage = new BasePage(driver);
     protected AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
+    protected ResultsOfSearchPage resultsOfSearchPage = new ResultsOfSearchPage(driver);
     protected SignIn signIn = new SignIn(driver);
 
     @AfterTest

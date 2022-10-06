@@ -7,7 +7,7 @@ public class Config {
      * Clear browser cookies after each iteration
      * if true - clear cookies
      */
-    public static final Boolean CLEAR_COOKIES_AND_STORAGE = true;
+    public static final Boolean CLEAR_COOKIES_AND_STORAGE = false;
 
     /**
      * To keep the browser open after suite
