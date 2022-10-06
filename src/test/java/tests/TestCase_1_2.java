@@ -12,7 +12,12 @@ public class TestCase_1_2 extends BaseTest {
         basePage.open(AMAZON_HOME_PAGE);
 
         amazonHomePage.searchProductOnAmazon("iPhone");
-        resultsOfSearchPage.checkTitle("iPhone");
+        resultsOfSearchPage
+                .checkTitle("iPhone")
+                .clickOnProduct();
+        productPage
+                .addToCart()
+                .checkProductAddedToCart("Added to Cart");
 
     }
 

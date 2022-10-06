@@ -9,13 +9,24 @@ public class ResultsOfSearchPage extends BasePage {
 
     public ResultsOfSearchPage(WebDriver driver) { super(driver); }
 
-    private final By titlesOfProducts = By.xpath("//div[contains(@class, 's-title-instructions-style')]");
+    private final By titleOfProducts = By.xpath("//div[contains(@class, 's-title-instructions-style')]");
 
-    // The method checks if the searched product is in the product name on the search results page
+    /**
+     * The method checks if the searched product is in the product name on the search results page
+     */
     public ResultsOfSearchPage checkTitle(String nameOfProduct){
-        String titleOfTheFirstProduct = driver.findElement(titlesOfProducts).getText();
+        String titleOfTheFirstProduct = driver.findElement(titleOfProducts).getText();
         Boolean result = titleOfTheFirstProduct.contains(nameOfProduct);
         Assert.assertEquals(result, true);
+
+        return this;
+    }
+
+    /**
+     * The method allows you to click on the first product found by nam
+     */
+    public ResultsOfSearchPage clickOnProduct(){
+        driver.findElement(titleOfProducts).click();
 
         return this;
     }

@@ -7,6 +7,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import pages.amazon_home.AmazonHomePage;
 import pages.base.BasePage;
+import pages.product.ProductPage;
 import pages.results_of_search.ResultsOfSearchPage;
 import pages.signin.SignIn;
 
@@ -19,6 +20,7 @@ public class BaseTest {
     protected BasePage basePage = new BasePage(driver);
     protected AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
     protected ResultsOfSearchPage resultsOfSearchPage = new ResultsOfSearchPage(driver);
+    protected ProductPage productPage = new ProductPage(driver);
     protected SignIn signIn = new SignIn(driver);
 
     @AfterTest
