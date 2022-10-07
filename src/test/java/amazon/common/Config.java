@@ -1,8 +1,8 @@
-package common;
+package amazon.common;
 
 public class Config {
 
-    public static final String PLATFORM_AND_BROWSER = "mac_chrome";
+    public static final String CHROME_PATH = "src/test/resources/chromedriver";
     /**
      * Clear browser cookies after each iteration
      * if true - clear cookies
@@ -14,11 +14,5 @@ public class Config {
      * if true - browser close
      */
     public static final Boolean HOLD_BROWSER_OPEN = true;
-
-    /**
-     * To open the Chrome browser with "--incognito" option
-     * if true - browser opens in incognito mode
-     */
-    public static final Boolean INCOGNITO_MODE = false;
 
 }

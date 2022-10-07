@@ -1,4 +1,4 @@
-package constants;
+package amazon.constants;
 
 public class Constant {
 
@@ -16,16 +16,6 @@ public class Constant {
      */
     public static class Urls {
         public static final String AMAZON_HOME_PAGE = "https://www.amazon.com/";
-    }
-
-    /**
-     * Constants carrying information about the user.
-     */
-    public static class User {
-        public static final String USER_EMAIL = "miron@chuduk.by";
-        public static final String USER_PASSWORD = "123test";
-        public static final String USER_NAME = "Miron";
-
     }
 
     public static final String NAME_OF_PRODUCT = "iPhone";
