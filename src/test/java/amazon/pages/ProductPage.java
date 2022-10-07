@@ -1,5 +1,6 @@
 package amazon.pages;
 
+import amazon.common.CommonActions;
 import org.openqa.selenium.By;
 
 public class ProductPage extends BasePage {
@@ -15,22 +16,27 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnAddToCartButton() {
+        CommonActions.waitElementIsVisible(addToCartButton);
         driver.findElement(addToCartButton).click();
     }
 
     public boolean productPictureIsDisplayed() {
+        CommonActions.waitElementIsVisible(productPicture);
         return driver.findElement(productPicture).isDisplayed();
     }
 
     public boolean checkMarkIsDisplayed() {
+        CommonActions.waitElementIsVisible(checkMark);
         return driver.findElement(checkMark).isDisplayed();
     }
 
     public String successMessage() {
+        CommonActions.waitElementIsVisible(successMessage);
         return driver.findElement(successMessage).getText();
     }
 
     public int valueOfCountProductsInCart() {
+        CommonActions.waitElementIsVisible(cartCount);
         return Integer.parseInt(driver.findElement(cartCount).getText());
     }
 

@@ -1,5 +1,6 @@
 package amazon.pages;
 
+import amazon.common.CommonActions;
 import org.openqa.selenium.By;
 
 public class ResultsOfSearchPage extends BasePage {
@@ -15,6 +16,7 @@ public class ResultsOfSearchPage extends BasePage {
     }
 
     public ProductPage clickOnProductTitle() {
+        CommonActions.waitElementIsVisible(productTitle);
         driver.findElement(productTitle).click();
         return new ProductPage();
     }

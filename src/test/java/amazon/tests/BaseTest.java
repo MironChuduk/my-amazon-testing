@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import static amazon.constants.Constant.TimeoutVariable.EXPLICIT_WAIT;
+import static amazon.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
 import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 
 public class BaseTest {
@@ -39,7 +39,7 @@ public class BaseTest {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", Config.CHROME_PATH);
             driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(EXPLICIT_WAIT, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
         return driver;
