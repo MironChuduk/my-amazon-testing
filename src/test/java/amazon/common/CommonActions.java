@@ -2,7 +2,6 @@ package amazon.common;
 
 import amazon.tests.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,5 +14,4 @@ public class CommonActions {
         new WebDriverWait(BaseTest.getWebDriverInstance(), EXPLICIT_WAIT)
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
 }

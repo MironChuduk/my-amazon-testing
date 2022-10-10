@@ -11,7 +11,7 @@ public class ResultsOfSearchPage extends BasePage {
         super();
     }
 
-    public boolean productTitleIsDisplayed() {
+    public boolean isProductTitleDisplayed() {
         return driver.findElement(productTitle).isDisplayed();
     }
 
@@ -20,5 +20,4 @@ public class ResultsOfSearchPage extends BasePage {
         driver.findElement(productTitle).click();
         return new ProductPage();
     }
-
 }

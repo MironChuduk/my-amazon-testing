@@ -1,20 +1,16 @@
 package amazon.services;
 
-import amazon.pages.BasePage;
 import amazon.pages.HomePage;
 
 public class HomePageService {
 
-    BasePage basePage;
     HomePage homePage;
 
-    public void searchProduct(String productName) {
-        basePage = new BasePage();
+    public ResultsOfSearchService searchProduct(String productName) {
         homePage = new HomePage();
         homePage.fillSearchBox(productName);
         homePage.clickOnSearchButton();
-
+        return new ResultsOfSearchService();
     }
-
 
 }

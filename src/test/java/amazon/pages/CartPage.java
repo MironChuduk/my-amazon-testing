@@ -12,10 +12,8 @@ public class CartPage extends BasePage {
         super();
     }
 
-    public boolean productTitleIsDisplayed() {
+    public boolean isProductTitleDisplayed() {
         CommonActions.waitElementIsVisible(addedProductTitle);
         return driver.findElement(addedProductTitle).isDisplayed();
     }
-
-
 }

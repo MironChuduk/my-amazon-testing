@@ -12,7 +12,6 @@ public class HomePage extends BasePage {
         super();
     }
 
-
     public void fillSearchBox(String nameOfProduct) {
         CommonActions.waitElementIsVisible(searchBox);
         driver.findElement(searchBox).clear();
@@ -22,8 +21,6 @@ public class HomePage extends BasePage {
     public ResultsOfSearchPage clickOnSearchButton() {
         CommonActions.waitElementIsVisible(searchButton);
         driver.findElement(searchButton).click();
-
         return new ResultsOfSearchPage();
     }
-
 }

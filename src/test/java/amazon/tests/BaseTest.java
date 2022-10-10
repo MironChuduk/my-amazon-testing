@@ -13,7 +13,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static amazon.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
@@ -28,11 +27,9 @@ public class BaseTest {
     protected CartService cartService;
 
     @BeforeMethod
-    public void searchProduct() {
+    public void serviceInitialization() {
         homePageService = new HomePageService();
-        resultsOfSearchService = new ResultsOfSearchService();
         productService = new ProductService();
-        cartService = new CartService();
     }
 
     public static WebDriver getWebDriverInstance() {
@@ -66,5 +63,4 @@ public class BaseTest {
             driver.quit();
         }
     }
-
 }

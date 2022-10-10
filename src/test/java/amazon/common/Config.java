@@ -14,5 +14,4 @@ public class Config {
      * if true - browser close
      */
     public static final Boolean HOLD_BROWSER_OPEN = true;
-
 }

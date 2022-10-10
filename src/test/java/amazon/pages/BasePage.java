@@ -10,5 +10,4 @@ public class BasePage {
     public BasePage() {
         this.driver = BaseTest.getWebDriverInstance();
     }
-
 }

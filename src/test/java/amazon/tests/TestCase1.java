@@ -1,5 +1,6 @@
 package amazon.tests;
 
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,17 +11,15 @@ public class TestCase1 extends BaseTest {
 
     @Test
     public void testCase2to4() {
-        homePageService.searchProduct(NAME_OF_PRODUCT);
-        Assert.assertTrue(resultsOfSearchService.productTitleIsDisplayed());
+        resultsOfSearchService = homePageService.searchProduct(NAME_OF_PRODUCT);
+        Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
         productService.addProductToCart();
-        Assert.assertTrue(productService.productPictureIsDisplayed());
-        Assert.assertTrue(productService.checkMarkIsDisplayed());
+        Assert.assertTrue(productService.isProductPictureDisplayed());
+        Assert.assertTrue(productService.isCheckMarkDisplayed());
         Assert.assertEquals(productService.successMessage(), MESSAGE_OF_SUCCESS_ADDITION_PRODUCT_TO_CART);
         Assert.assertEquals(productService.valueOfCountProductsInCart(), 1);
-        productService.clickOnShoppingCart();
-        Assert.assertTrue(cartService.productTitleIsDisplayed());
+        cartService = productService.clickOnShoppingCart();
+        Assert.assertTrue(cartService.isProductTitleDisplayed());
 
     }
-
-
 }

@@ -1,30 +1,25 @@
 package amazon.services;
 
-import amazon.pages.BasePage;
 import amazon.pages.ProductPage;
 import amazon.pages.ResultsOfSearchPage;
-import amazon.tests.BaseTest;
 
 public class ProductService {
-
-    BasePage basePage;
     ResultsOfSearchPage resultsOfSearchPage;
     ProductPage productPage;
 
     public void addProductToCart() {
-        basePage = new BasePage();
         productPage = new ProductPage();
         resultsOfSearchPage = new ResultsOfSearchPage();
         resultsOfSearchPage.clickOnProductTitle();
         productPage.clickOnAddToCartButton();
     }
 
-    public boolean productPictureIsDisplayed() {
-        return productPage.productPictureIsDisplayed();
+    public boolean isProductPictureDisplayed() {
+        return productPage.isProductPictureDisplayed();
     }
 
-    public boolean checkMarkIsDisplayed() {
-        return productPage.checkMarkIsDisplayed();
+    public boolean isCheckMarkDisplayed() {
+        return productPage.isCheckMarkDisplayed();
     }
 
     public String successMessage() {
@@ -35,9 +30,8 @@ public class ProductService {
         return productPage.valueOfCountProductsInCart();
     }
 
-    public void clickOnShoppingCart() {
+    public CartService clickOnShoppingCart() {
         productPage.clickOnShoppingCart();
+        return new CartService();
     }
-
-
 }

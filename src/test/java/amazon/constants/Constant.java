@@ -20,5 +20,4 @@ public class Constant {
 
     public static final String NAME_OF_PRODUCT = "iPhone";
     public static final String MESSAGE_OF_SUCCESS_ADDITION_PRODUCT_TO_CART = "Added to Cart";
-
 }

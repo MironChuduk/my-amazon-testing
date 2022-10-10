@@ -20,12 +20,12 @@ public class ProductPage extends BasePage {
         driver.findElement(addToCartButton).click();
     }
 
-    public boolean productPictureIsDisplayed() {
+    public boolean isProductPictureDisplayed() {
         CommonActions.waitElementIsVisible(productPicture);
         return driver.findElement(productPicture).isDisplayed();
     }
 
-    public boolean checkMarkIsDisplayed() {
+    public boolean isCheckMarkDisplayed() {
         CommonActions.waitElementIsVisible(checkMark);
         return driver.findElement(checkMark).isDisplayed();
     }
@@ -44,6 +44,4 @@ public class ProductPage extends BasePage {
         driver.findElement(cartCount).click();
         return new CartPage();
     }
-
-
 }
