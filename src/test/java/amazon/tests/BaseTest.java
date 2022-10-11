@@ -26,12 +26,6 @@ public class BaseTest {
     protected ProductService productService;
     protected CartService cartService;
 
-    @BeforeMethod
-    public void serviceInitialization() {
-        homePageService = new HomePageService();
-        productService = new ProductService();
-    }
-
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", Config.CHROME_PATH);

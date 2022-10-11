@@ -4,7 +4,7 @@ import amazon.pages.CartPage;
 
 public class CartService {
 
-    CartPage cartPage;
+    private CartPage cartPage;
 
     public boolean isProductTitleDisplayed() {
         cartPage = new CartPage();

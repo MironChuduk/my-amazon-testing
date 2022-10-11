@@ -4,8 +4,8 @@ import amazon.pages.ProductPage;
 import amazon.pages.ResultsOfSearchPage;
 
 public class ProductService {
-    ResultsOfSearchPage resultsOfSearchPage;
-    ProductPage productPage;
+    private ResultsOfSearchPage resultsOfSearchPage;
+    private ProductPage productPage;
 
     public void addProductToCart() {
         productPage = new ProductPage();

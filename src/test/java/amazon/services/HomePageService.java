@@ -4,7 +4,7 @@ import amazon.pages.HomePage;
 
 public class HomePageService {
 
-    HomePage homePage;
+    private HomePage homePage;
 
     public ResultsOfSearchService searchProduct(String productName) {
         homePage = new HomePage();

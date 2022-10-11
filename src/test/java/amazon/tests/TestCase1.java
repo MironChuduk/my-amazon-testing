@@ -1,6 +1,8 @@
 package amazon.tests;
 
 
+import amazon.services.HomePageService;
+import amazon.services.ProductService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,8 +13,10 @@ public class TestCase1 extends BaseTest {
 
     @Test
     public void testCase2to4() {
+        homePageService = new HomePageService();
         resultsOfSearchService = homePageService.searchProduct(NAME_OF_PRODUCT);
         Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
+        productService = new ProductService();
         productService.addProductToCart();
         Assert.assertTrue(productService.isProductPictureDisplayed());
         Assert.assertTrue(productService.isCheckMarkDisplayed());
@@ -20,6 +24,5 @@ public class TestCase1 extends BaseTest {
         Assert.assertEquals(productService.valueOfCountProductsInCart(), 1);
         cartService = productService.clickOnShoppingCart();
         Assert.assertTrue(cartService.isProductTitleDisplayed());
-
     }
 }
