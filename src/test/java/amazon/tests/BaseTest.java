@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,10 +20,6 @@ import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 public class BaseTest {
 
     private static WebDriver driver;
-    protected HomePageService homePageService;
-    protected ResultsOfSearchService resultsOfSearchService;
-    protected ProductService productService;
-    protected CartService cartService;
 
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
