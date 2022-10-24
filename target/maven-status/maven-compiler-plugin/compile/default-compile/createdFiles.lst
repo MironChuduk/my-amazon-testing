@@ -1,9 +1,0 @@
-constants/Constant.class
-constants/Constant$User.class
-constants/Constant$Urls.class
-pages/signin/SignIn.class
-common/CommonActions.class
-pages/amazon_home/AmazonHomePage.class
-constants/Constant$TimeoutVariable.class
-pages/base/BasePage.class
-common/Config.class
