@@ -19,7 +19,7 @@ import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 
 public class BaseTest {
 
-    private static WebDriver driver;
+    protected static WebDriver driver;
 
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
