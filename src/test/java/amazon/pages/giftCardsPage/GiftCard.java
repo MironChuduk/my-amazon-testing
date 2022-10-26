@@ -7,16 +7,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class GiftCard {
-    public String getCardTitle() {
-        return cardTitle;
-    }
-
-    public String getMinPrice() {
-        return minPrice;
-    }
-
-    private final String cardTitle;
-    private final String minPrice;
+    private String cardTitle;
+    private String minPrice;
 
     private GiftCard(GiftCardBuilder builder) {
         this.cardTitle = builder.cardTitle;
@@ -42,6 +34,10 @@ public class GiftCard {
         }
     }
 
+    public String getMinPrice() {
+        return minPrice;
+    }
+
     @Override
     public String toString() {
         return "GiftCard{" +
@@ -50,7 +46,7 @@ public class GiftCard {
                 '}';
     }
 
-    public static List<GiftCard> getExpectedProduct(List<String> keys) {
+    public static List<GiftCard> getExpectedGiftCards(List<String> keys) {
         PropertiesParser propertiesParser = new PropertiesParser();
         List<GiftCard> expectedProductList = new ArrayList<>();
         for (String key : keys) {

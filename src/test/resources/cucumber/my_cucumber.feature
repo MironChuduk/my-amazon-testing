@@ -1,7 +1,9 @@
 Feature: Addition product to cart Test
 
-  Scenario: Add product to cart Test
+  Background:
     Given I open link "https://www.amazon.com/" in browser
+
+  Scenario: Add product to cart Test
     When I search "iPhone" on Amazon
     Then Verify if product is displayed
     And I add product to cart
@@ -10,7 +12,6 @@ Feature: Addition product to cart Test
     Then Verify is product displayed on cart page
 
   Scenario: Verify menu list on Home Page
-    Given I open link "https://www.amazon.com/" in browser
     Then Verify menu items
       | Today's Deals    |
       | Customer Service |
@@ -19,14 +20,12 @@ Feature: Addition product to cart Test
       | Sell             |
 
   Scenario: Verify selected language and currency
-    Given I open link "https://www.amazon.com/" in browser
-    And I scroll page down
+    When I scroll page down
     Then Verify language is "English"
     And Verify currency is "$USD - U.S. Dollar"
 
   Scenario: Verify correct work of sorting and filtering on Gift Cards Page
-    Given I open link "https://www.amazon.com/" in browser
-    And I open Gift Cards Page
+    When I open Gift Cards Page
     Then I choose format "Gift Box"
     And I choose brand "Amazon"
     And I choose price "$25 to $50"

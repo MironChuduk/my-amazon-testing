@@ -40,7 +40,7 @@ public class GiftCardsSteps {
     public void verify() {
         giftCardsService = new GiftCardsService();
         List<String> keys = Arrays.asList("item1", "item2", "item3", "item4");
-        List<GiftCard> expectedProductList = GiftCard.getExpectedProduct(keys);
+        List<GiftCard> expectedProductList = GiftCard.getExpectedGiftCards(keys);
         List<GiftCard> actualProductList = giftCardsService.getGiftCardList();
         Assert.assertEquals(actualProductList, expectedProductList);
         Assert.assertTrue(Integer

@@ -17,7 +17,7 @@ public class HomePageService {
         return new ResultsOfSearchService();
     }
 
-    public List<String> listOfItemTitles() {
+    public List<String> listOfGiftCardTitles() {
         homePage = new HomePage();
         return homePage.findMenuItems().stream().map(WebElement::getText).collect(Collectors.toList());
     }

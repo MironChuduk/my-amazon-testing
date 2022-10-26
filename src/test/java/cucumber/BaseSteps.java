@@ -6,6 +6,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -27,10 +28,10 @@ public class BaseSteps {
     @Then("Verify menu items$")
     public void itemsAreDisplayed(List<String> expectedItems) {
         homePageService = new HomePageService();
-        Assert.assertEquals(homePageService.listOfItemTitles(), expectedItems);
+        Assert.assertEquals(homePageService.listOfGiftCardTitles(), expectedItems);
     }
 
-    @And("I scroll page down")
+    @When("I scroll page down")
     public void scrollPageDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,6000)");
@@ -48,12 +49,10 @@ public class BaseSteps {
         Assert.assertEquals(homePageService.getSelectedCurrency(), expectedCurrency);
     }
 
-    @And("I open Gift Cards Page")
+    @When("I open Gift Cards Page")
     public void openGiftCardsPage() {
-        System.out.println("TESTTT!");
         homePageService = new HomePageService();
         homePageService.goToGiftCardsPage();
-        System.out.println("TESTTT!");
     }
 
     @After
