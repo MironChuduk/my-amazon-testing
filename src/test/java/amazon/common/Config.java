@@ -14,4 +14,9 @@ public class Config {
      * if true - browser close
      */
     public static final Boolean HOLD_BROWSER_OPEN = true;
+    /**
+     * To run tests without browser window
+     * if true - run without window
+     */
+    public static final Boolean RUN_TEST_WITH_BROWSER_WINDOW = true;
 }

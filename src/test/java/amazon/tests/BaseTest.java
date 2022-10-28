@@ -8,12 +8,14 @@ import amazon.services.ResultsOfSearchService;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
+import static amazon.common.Config.RUN_TEST_WITH_BROWSER_WINDOW;
 import static amazon.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
 import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 
@@ -24,7 +26,13 @@ public class BaseTest {
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", Config.CHROME_PATH);
-            driver = new ChromeDriver();
+            if(RUN_TEST_WITH_BROWSER_WINDOW) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                driver = new ChromeDriver(options);
+            } else {
+                driver = new ChromeDriver();
+            }
             driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
