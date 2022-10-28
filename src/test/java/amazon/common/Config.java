@@ -18,5 +18,5 @@ public class Config {
      * To run tests without browser window
      * if true - run without window
      */
-    public static final Boolean RUN_TEST_WITH_BROWSER_WINDOW = true;
+    public static final Boolean RUN_TEST_WITH_BROWSER_WINDOW = false;
 }
