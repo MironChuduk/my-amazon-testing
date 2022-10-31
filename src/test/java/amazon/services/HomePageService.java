@@ -32,8 +32,9 @@ public class HomePageService {
         return homePage.getSelectedCurrency().getText();
     }
 
-    public void goToGiftCardsPage() {
+    public GiftCardsService goToGiftCardsPage() {
         homePage = new HomePage();
         homePage.clickOnGiftCardsButton();
+        return new GiftCardsService();
     }
 }

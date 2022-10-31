@@ -2,39 +2,38 @@ package cucumber;
 
 import amazon.services.HomePageService;
 import amazon.tests.BaseTest;
-import io.cucumber.java.After;
+import amazon.utils.JavascriptExecutorUtil;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.util.List;
+
+import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 
 public class BaseSteps {
 
     private WebDriver driver;
     private HomePageService homePageService;
 
-    @Given("I open link {string} in browser")
-    public void openBrowser(String url) {
+    @Given("I open the site in browser")
+    public void openBrowser() {
         driver = BaseTest.getWebDriverInstance();
-        driver.get(url);
-        System.out.println("TESTTT!");
+        driver.get(AMAZON_HOME_PAGE);
     }
 
     @Then("Verify menu items$")
-    public void itemsAreDisplayed(List<String> expectedItems) {
+    public void verifyAreItemsDisplayed(List<String> expectedItems) {
         homePageService = new HomePageService();
         Assert.assertEquals(homePageService.listOfGiftCardTitles(), expectedItems);
     }
 
     @When("I scroll page down")
     public void scrollPageDown() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,6000)");
+        JavascriptExecutorUtil.scrollPage(driver, 6000);
     }
 
     @Then("Verify language is {string}")
@@ -53,14 +52,5 @@ public class BaseSteps {
     public void openGiftCardsPage() {
         homePageService = new HomePageService();
         homePageService.goToGiftCardsPage();
-    }
-
-    @After
-    public void tearDown() {
-        driver = BaseTest.getWebDriverInstance();
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        driver.manage().deleteAllCookies();
-        javascriptExecutor.executeScript("window.sessionStorage.clear()");
-        driver.quit();
     }
 }

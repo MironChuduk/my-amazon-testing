@@ -18,7 +18,7 @@ public class CartSteps {
         productService.addProductToCart();
     }
 
-    @Then("Verify if product is added to cart")
+    @Then("I see the product is added to cart")
     public void productIsAddedToCart() {
         Assert.assertTrue(productService.isProductPictureDisplayed());
         Assert.assertTrue(productService.isCheckMarkDisplayed());
@@ -31,7 +31,7 @@ public class CartSteps {
         cartService = productService.clickOnShoppingCart();
     }
 
-    @Then("Verify is product displayed on cart page")
+    @Then("I see the product is displayed on cart page")
     public void productIsInCart() {
         Assert.assertTrue(cartService.isProductTitleDisplayed());
     }

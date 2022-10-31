@@ -16,7 +16,7 @@ public class ProductSteps {
         resultsOfSearchService = homePageService.searchProduct(productName);
     }
 
-    @Then("Verify if product is displayed")
+    @Then("I see the product")
     public void productIsDisplayed() {
         Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
     }

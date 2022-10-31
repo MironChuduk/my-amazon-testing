@@ -3,10 +3,10 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/mironchuduk/IdeaProjects/my-amazon-testing">
         <classes>
-            <class name="amazon.tests.CucumberRunnerTests">
-<!--                <methods>-->
-<!--                    <include name=""/>-->
-<!--                </methods>-->
+            <class name="amazon.tests.FormalTest">
+                <methods>
+                    <include name="formalTest"/>
+                </methods>
             </class>
         </classes>
     </test>

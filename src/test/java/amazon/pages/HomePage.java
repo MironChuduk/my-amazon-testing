@@ -6,6 +6,7 @@ import amazon.common.CommonActions;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class HomePage extends BasePage {
 
@@ -47,7 +48,7 @@ public class HomePage extends BasePage {
     }
 
     public GiftCardsPage clickOnGiftCardsButton() {
-        driver.findElement(dontChangeButton).click();
+        //driver.findElement(dontChangeButton).click();
         driver.findElement(giftCardsButton).click();
         return new GiftCardsPage();
     }

@@ -9,7 +9,8 @@ import java.util.List;
 
 public class GiftCardsPage extends BasePage {
     private final By sortButton = By.xpath("//span[text()='Sort by:']");
-    private final By resultItems = By.xpath("//div[contains(@class, 'a-spacing-base')]");
+    private final By resultItems = By.xpath("//div[@class='sg-col-inner']" +
+            "//div[contains(@class, 'a-spacing-base')]");
 
     public GiftCardsPage() {
         super();

@@ -15,24 +15,20 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-import static amazon.common.Config.RUN_TEST_WITH_BROWSER_WINDOW;
 import static amazon.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
 import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 
 public class BaseTest {
 
-    protected static WebDriver driver;
+    private static WebDriver driver;
+    private static int count = 0;
 
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
+            System.out.println("Instance # " + count);
+            count++;
             System.setProperty("webdriver.chrome.driver", Config.CHROME_PATH);
-            if(RUN_TEST_WITH_BROWSER_WINDOW) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--headless");
-                driver = new ChromeDriver(options);
-            } else {
-                driver = new ChromeDriver();
-            }
+            driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
