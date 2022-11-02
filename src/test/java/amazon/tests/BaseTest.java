@@ -1,14 +1,12 @@
 package amazon.tests;
 
 import amazon.common.Config;
-import amazon.services.CartService;
-import amazon.services.HomePageService;
-import amazon.services.ProductService;
-import amazon.services.ResultsOfSearchService;
+import amazon.listeners.WebDriverListener;
+import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -21,12 +19,9 @@ import static amazon.constants.Constant.Urls.AMAZON_HOME_PAGE;
 public class BaseTest {
 
     private static WebDriver driver;
-    private static int count = 0;
 
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
-            System.out.println("Instance # " + count);
-            count++;
             System.setProperty("webdriver.chrome.driver", Config.CHROME_PATH);
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
@@ -37,7 +32,15 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
+        BasicConfigurator.configure();
+
         driver = getWebDriverInstance();
+
+        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        eventFiringWebDriver.register(new WebDriverListener());
+
+        driver = eventFiringWebDriver;
+
         driver.get(AMAZON_HOME_PAGE);
     }
 
