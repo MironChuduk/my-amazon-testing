@@ -1,13 +1,12 @@
 package amazon.tests;
 
 import amazon.common.Config;
-import amazon.services.CartService;
-import amazon.services.HomePageService;
-import amazon.services.ProductService;
-import amazon.services.ResultsOfSearchService;
+import amazon.listeners.WebDriverListener;
+import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -33,7 +32,15 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
+        BasicConfigurator.configure();
+
         driver = getWebDriverInstance();
+
+        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        eventFiringWebDriver.register(new WebDriverListener());
+
+        driver = eventFiringWebDriver;
+
         driver.get(AMAZON_HOME_PAGE);
     }
 
