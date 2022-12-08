@@ -8,8 +8,7 @@ import amazon.services.ResultsOfSearchService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static amazon.constants.Constant.MESSAGE_OF_SUCCESS_ADDITION_PRODUCT_TO_CART;
-import static amazon.constants.Constant.NAME_OF_PRODUCT;
+import static amazon.constants.Constant.*;
 
 public class TestCase1 extends BaseTest {
 
@@ -21,7 +20,7 @@ public class TestCase1 extends BaseTest {
     @Test
     public void testCase2to4() {
         homePageService = new HomePageService();
-        resultsOfSearchService = homePageService.searchProduct(NAME_OF_PRODUCT);
+        resultsOfSearchService = homePageService.searchProduct(IPHONE);
         Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
         productService = new ProductService();
         productService.addProductToCart();

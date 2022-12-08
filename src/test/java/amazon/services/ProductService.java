@@ -1,5 +1,6 @@
 package amazon.services;
 
+import amazon.common.CommonActions;
 import amazon.pages.ProductPage;
 import amazon.pages.ResultsOfSearchPage;
 
