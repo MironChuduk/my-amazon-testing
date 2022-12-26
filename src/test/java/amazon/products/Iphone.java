@@ -4,47 +4,61 @@ import amazon.utils.PropertiesParser;
 
 import java.util.Objects;
 
-public class Iphone extends Product {
-    public Iphone() {}
+public final class Iphone extends Product {
+    private String size;
 
-    private Iphone(IphoneBuilder builder) {
-        this.productTitle = builder.productTitle;
-        this.actualPrice = builder.actualPrice;
+    private Iphone(Iphone iphone) {
+        super(iphone);
+        this.size = iphone.size;
     }
 
-    public static class IphoneBuilder {
-        private String productTitle;
-        private String actualPrice;
+    Iphone() {
+    }
 
-        public IphoneBuilder setIphoneTitle(String productTitle) {
-            this.productTitle = productTitle;
-            return this;
+    public final String getSize() {
+        return size;
+    }
+
+    final void setSize(String size) {
+        this.size = size;
+    }
+
+    public static final class Builder extends PBuilder<Iphone, Builder> {
+
+        public Builder() {
+            super(new Iphone());
         }
 
-        public IphoneBuilder setPrice(String actualPrice) {
-            this.actualPrice = actualPrice;
-            return this;
+        public Builder(Iphone iphone) {
+            super(new Iphone(iphone));
+        }
+
+        public final Builder size(String size) {
+            product.setSize(size);
+            return self();
         }
 
         public Iphone build() {
-            return new Iphone(this);
+            return new Iphone(product);
         }
     }
 
-    public static Iphone getExpectedIphone(String key) {
+    public static Iphone getExpectedObject(String key) {
         PropertiesParser propertiesParser = new PropertiesParser();
         String[] listOfProperties = propertiesParser.parsProperties(key);
-        return new IphoneBuilder()
-                .setIphoneTitle(listOfProperties[0])
-                .setPrice(listOfProperties[1])
+        return new Iphone.Builder()
+                .title(listOfProperties[0])
+                .price(listOfProperties[1])
+                .size(listOfProperties[2])
                 .build();
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "productTitle='" + productTitle + '\'' +
-                ", price='" + actualPrice + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", price='" + getPrice() + '\'' +
+                ", size='" + getSize() + '\'' +
                 '}';
     }
 
@@ -53,11 +67,11 @@ public class Iphone extends Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Iphone iPhone = (Iphone) o;
-        return Objects.equals(productTitle, iPhone.productTitle) && Objects.equals(actualPrice, iPhone.actualPrice);
+        return Objects.equals(getTitle(), iPhone.getTitle()) && Objects.equals(getPrice(), iPhone.getPrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productTitle, actualPrice);
+        return Objects.hash(getTitle(), getPrice());
     }
 }

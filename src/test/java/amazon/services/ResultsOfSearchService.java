@@ -11,6 +11,7 @@ public class ResultsOfSearchService {
     }
 
     public ProductService clickOnProductTitle() {
+        resultsOfSearchPage = new ResultsOfSearchPage();
         resultsOfSearchPage.clickOnProductTitle();
         return new ProductService();
     }

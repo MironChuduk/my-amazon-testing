@@ -4,47 +4,69 @@ import amazon.utils.PropertiesParser;
 
 import java.util.Objects;
 
-public class Television extends Product {
-    public Television() {}
+public final class Television extends Product {
 
-    private Television(TelevisionBuilder builder) {
-        this.productTitle = builder.productTitle;
-        this.actualPrice = builder.actualPrice;
+    // private non-final fields
+    private String qty;
+
+    // copy constructor
+    private Television(Television television) {
+        super(television);
+        this.qty = television.qty;
     }
 
-    public static class TelevisionBuilder {
-        private String productTitle;
-        private String actualPrice;
+    // no-arg constructor for serialization and builder
+    Television() {
+    }
 
-        public TelevisionBuilder setTelevisionTitle(String productTitle) {
-            this.productTitle = productTitle;
-            return this;
+    // getter methods
+    public final String getQty() {
+        return qty;
+    }
+
+    // package private setter methods, good for serialization frameworks
+    final void setQty(String qty) {
+        this.qty = qty;
+    }
+
+    // the builder that creates lops
+    public static final class Builder extends PBuilder<Television, Builder> {
+
+        public Builder() {
+            super(new Television());
         }
 
-        public TelevisionBuilder setPrice(String actualPrice) {
-            this.actualPrice = actualPrice;
-            return this;
+        // we could provide a public copy constructor to support modifying lops
+        public Builder(Television television) {
+            super(new Television(television));
+        }
+
+        public final Builder qty(String qty) {
+            product.setQty(qty);
+            return self();
         }
 
         public Television build() {
-            return new Television(this);
+            return new Television(product);
         }
     }
 
-    public static Television getExpectedTelevision(String key) {
+    public static Television getExpectedObject(String key) {
         PropertiesParser propertiesParser = new PropertiesParser();
         String[] listOfProperties = propertiesParser.parsProperties(key);
-        return new TelevisionBuilder()
-                .setTelevisionTitle(listOfProperties[0])
-                .setPrice(listOfProperties[1])
+        return new Television.Builder()
+                .title(listOfProperties[0])
+                .price(listOfProperties[1])
+                .qty(listOfProperties[2])
                 .build();
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "productTitle='" + productTitle + '\'' +
-                ", price='" + actualPrice + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", price='" + getPrice() + '\'' +
+                ", size='" + getQty() + '\'' +
                 '}';
     }
 
@@ -53,11 +75,11 @@ public class Television extends Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Television television = (Television) o;
-        return Objects.equals(productTitle, television.productTitle) && Objects.equals(actualPrice, television.actualPrice);
+        return Objects.equals(getTitle(), television.getTitle()) && Objects.equals(getPrice(), television.getPrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productTitle, actualPrice);
+        return Objects.hash(getTitle(), getPrice());
     }
 }

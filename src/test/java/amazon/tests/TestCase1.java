@@ -20,6 +20,7 @@ public class TestCase1 extends BaseTest {
     @Test
     public void testCase2to4() {
         homePageService = new HomePageService();
+        String IPHONE = "iPhone";
         resultsOfSearchService = homePageService.searchProduct(IPHONE);
         Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
         productService = new ProductService();

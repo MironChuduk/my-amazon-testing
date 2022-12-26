@@ -1,6 +1,7 @@
 package amazon.tests;
 
 import amazon.products.Iphone;
+import amazon.products.Product;
 import amazon.products.Television;
 import amazon.services.CartService;
 import amazon.services.HomePageService;
@@ -25,23 +26,25 @@ public class GenericsTest extends BaseTest {
         productService.addProductToCart();
         cartService = productService.clickOnShoppingCart();
         Assert.assertTrue(cartService.isProductTitleDisplayed());
-        Iphone expectedIphone = Iphone.getExpectedIphone("iPhone");
-        Iphone actualIphone = new Iphone.IphoneBuilder()
-                .setIphoneTitle(cartService.getLastTitle())
-                .setPrice(cartService.getLastPrice())
-                .build();
+        Product expectedIphone = Iphone.getExpectedObject("iPhone");
+        Product actualIphone = cartService.getObjectFromPage(Iphone.class);
+        System.out.println(expectedIphone);
+        System.out.println(actualIphone);
+        System.out.println(expectedIphone.getClass());
+        System.out.println(actualIphone.getClass());
         Assert.assertTrue(cartService.verifyProduct(expectedIphone, actualIphone));
         String TELEVISION = "SANSUI ES24T1H, 24 inch LED TV HD 720P with HDMI USB AV in Optical Ports (Packed with HDMI Cable)";
         resultsOfSearchService = homePageService.searchProduct(TELEVISION);
+        productService = resultsOfSearchService.clickOnProductTitle();
         productService.addProductToCart();
         cartService = productService.clickOnShoppingCart();
         Assert.assertTrue(cartService.isProductTitleDisplayed());
-        Television expectedTelevision = Television.getExpectedTelevision("television");
-        Television actualTelevision = new Television.TelevisionBuilder()
-                .setTelevisionTitle(cartService.getLastTitle())
-                .setPrice(cartService.getLastPrice())
-                .build();
+        Product actualTelevision = cartService.getObjectFromPage(Television.class);
+        Product expectedTelevision = Television.getExpectedObject("television");
+        System.out.println(expectedTelevision);
+        System.out.println(actualTelevision);
+        System.out.println(expectedTelevision.getClass());
+        System.out.println(actualTelevision.getClass());
         Assert.assertTrue(cartService.verifyProduct(expectedTelevision, actualTelevision));
-
     }
 }
