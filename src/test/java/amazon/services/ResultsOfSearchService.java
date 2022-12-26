@@ -9,4 +9,9 @@ public class ResultsOfSearchService {
         resultsOfSearchPage = new ResultsOfSearchPage();
         return resultsOfSearchPage.isProductTitleDisplayed();
     }
+
+    public ProductService clickOnProductTitle() {
+        resultsOfSearchPage.clickOnProductTitle();
+        return new ProductService();
+    }
 }

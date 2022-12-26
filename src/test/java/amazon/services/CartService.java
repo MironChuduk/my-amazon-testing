@@ -12,11 +12,11 @@ public class CartService<T> {
     }
 
     public String getLastTitle() {
-        return cartPage.getAddedProductTitle();
+        return cartPage.getProductTitle();
     }
 
     public String getLastPrice() {
-        return cartPage.getAddedProductPrice();
+        return cartPage.getProductPrice();
     }
 
     public boolean verifyProduct(T expectedProduct, T actualProduct) {

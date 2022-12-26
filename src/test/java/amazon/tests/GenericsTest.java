@@ -9,9 +9,6 @@ import amazon.services.ResultsOfSearchService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static amazon.constants.Constant.IPHONE;
-import static amazon.constants.Constant.TELEVISION;
-
 public class GenericsTest extends BaseTest {
     private HomePageService homePageService;
     private ResultsOfSearchService resultsOfSearchService;
@@ -21,9 +18,10 @@ public class GenericsTest extends BaseTest {
     @Test
     public void genericsTest() {
         homePageService = new HomePageService();
+        String IPHONE = "iPhone 11 pro";
         resultsOfSearchService = homePageService.searchProduct(IPHONE);
         Assert.assertTrue(resultsOfSearchService.isProductTitleDisplayed());
-        productService = new ProductService();
+        productService = resultsOfSearchService.clickOnProductTitle();
         productService.addProductToCart();
         cartService = productService.clickOnShoppingCart();
         Assert.assertTrue(cartService.isProductTitleDisplayed());
@@ -33,6 +31,7 @@ public class GenericsTest extends BaseTest {
                 .setPrice(cartService.getLastPrice())
                 .build();
         Assert.assertTrue(cartService.verifyProduct(expectedIphone, actualIphone));
+        String TELEVISION = "SANSUI ES24T1H, 24 inch LED TV HD 720P with HDMI USB AV in Optical Ports (Packed with HDMI Cable)";
         resultsOfSearchService = homePageService.searchProduct(TELEVISION);
         productService.addProductToCart();
         cartService = productService.clickOnShoppingCart();

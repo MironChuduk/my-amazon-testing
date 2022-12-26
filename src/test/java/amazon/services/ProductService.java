@@ -5,13 +5,10 @@ import amazon.pages.ProductPage;
 import amazon.pages.ResultsOfSearchPage;
 
 public class ProductService {
-    private ResultsOfSearchPage resultsOfSearchPage;
     private ProductPage productPage;
 
     public void addProductToCart() {
         productPage = new ProductPage();
-        resultsOfSearchPage = new ResultsOfSearchPage();
-        resultsOfSearchPage.clickOnProductTitle();
         productPage.clickOnAddToCartButton();
     }
 

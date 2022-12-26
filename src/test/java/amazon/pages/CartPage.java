@@ -5,27 +5,27 @@ import org.openqa.selenium.By;
 
 public class CartPage extends BasePage {
 
-    private final By addedProductTitle = By
+    private final By productTitle = By
             .xpath("//div[@data-name='Active Items']//span[@class='a-truncate-cut']");
-    private final By addedProductPrice = By
-            .xpath("//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold']");
+    private final By productPrice = By
+            .xpath("//span[contains(@class, 'sc-product-price')]");
 
     public CartPage() {
         super();
     }
 
     public boolean isProductTitleDisplayed() {
-        CommonActions.waitElementIsVisible(addedProductTitle);
-        return driver.findElement(addedProductTitle).isDisplayed();
+        CommonActions.waitElementIsVisible(productTitle);
+        return driver.findElement(productTitle).isDisplayed();
     }
 
-    public String getAddedProductTitle() {
-        CommonActions.waitElementIsVisible(addedProductTitle);
-        return driver.findElement(addedProductTitle).getText();
+    public String getProductTitle() {
+        CommonActions.waitElementIsVisible(productTitle);
+        return driver.findElement(productTitle).getText();
     }
 
-    public String getAddedProductPrice() {
-        CommonActions.waitElementIsVisible(addedProductPrice);
-        return driver.findElement(addedProductPrice).getText();
+    public String getProductPrice() {
+        CommonActions.waitElementIsVisible(productPrice);
+        return driver.findElement(productPrice).getText();
     }
 }
